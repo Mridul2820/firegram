@@ -1,3 +1,5 @@
+import { motion } from "framer-motion"
+
 const Modal = ({ selectedImg, setSelectedimg }) => {
 
     const handleClick = (e) => {
@@ -7,9 +9,19 @@ const Modal = ({ selectedImg, setSelectedimg }) => {
     }
 
     return (
-        <div className="backdrop" onClick={handleClick} >
-            <img src={selectedImg} alt="modal pic"/>
-        </div>
+        <motion.div 
+            className="backdrop" 
+            onClick={handleClick} 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+        >
+            <motion.img 
+                src={selectedImg} 
+                alt="modal pic"
+                initial={{ y: "-100vh" }}
+                animate={{ y: 0 }}
+            />
+        </motion.div>
     )
 }
 
